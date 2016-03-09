@@ -346,7 +346,7 @@ static irqreturn_t ad799x_event_handler(int irq, void *private)
 							    (i >> 1),
 							    IIO_EV_TYPE_THRESH,
 							    IIO_EV_DIR_FALLING),
-				       iio_get_time_ns());
+				       iio_get_time_ns(indio_dev));
 	}
 
 done:

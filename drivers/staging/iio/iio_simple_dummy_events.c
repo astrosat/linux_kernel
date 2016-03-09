@@ -152,7 +152,7 @@ static irqreturn_t iio_simple_dummy_event_handler(int irq, void *private)
 		       IIO_EVENT_CODE(IIO_VOLTAGE, 0, 0,
 				      IIO_EV_DIR_RISING,
 				      IIO_EV_TYPE_THRESH, 0, 0, 0),
-		       iio_get_time_ns());
+		       iio_get_time_ns(indio_dev));
 	return IRQ_HANDLED;
 }
 
