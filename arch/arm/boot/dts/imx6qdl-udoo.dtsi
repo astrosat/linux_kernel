@@ -175,6 +175,15 @@
 	};
 };
 
+&i2c1 { // external I2C bus
+	accelerometer: imu@69 {
+		compatible = "invensense,mpu6050";
+		reg = <0x69>;
+		interrupt-parent = <&gpio5>;
+		interrupts = <22 IRQ_TYPE_EDGE_RISING>;
+	};
+};
+
 &i2c2 { // internal (hdmi)
 	clock-frequency = <100000>;
 	pinctrl-names = "default";
