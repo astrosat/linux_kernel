@@ -197,8 +197,11 @@
 
 &i2c1 {
 	clock-frequency = <100000>;
-	pinctrl-names = "default";
+	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c1>;
+	pinctrl-1 = <&pinctrl_i2c1_recovery>;
+	scl-gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio3 28 GPIO_ACTIVE_HIGH>;
 	status = "disabled";
 };
 

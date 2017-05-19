@@ -177,8 +177,11 @@
 
 &i2c2 { // internal (hdmi)
 	clock-frequency = <100000>;
-	pinctrl-names = "default";
+	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c2>;
+	pinctrl-1 = <&pinctrl_i2c2_recovery>;
+	scl-gpios = <&gpio4 12 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio4 13 GPIO_ACTIVE_HIGH>;
 	status = "okay";
 	
 	hdmi: edid@50 {
@@ -189,8 +192,11 @@
 
 &i2c3 { // CSI camera (CN11) and LVDS 7 inches touch panel (CN13)
 	clock-frequency = <100000>;
-	pinctrl-names = "default";
+	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c3>;
+	pinctrl-1 = <&pinctrl_i2c3_recovery>;
+	scl-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio1 6 GPIO_ACTIVE_HIGH>;
 	status = "okay";
 	ov5640_mipi: ov5640_mipi@3c {
 		compatible = "ovti,ov5640_mipi";
@@ -297,6 +303,28 @@
 			fsl,pins = <
 			MX6QDL_PAD_GPIO_5__I2C3_SCL		0x4001b8b1
 			MX6QDL_PAD_GPIO_6__I2C3_SDA		0x4001b8b1
+			>;
+		};
+		
+		/* pinctrl modes for I²C bus recovery */
+		pinctrl_i2c1_recovery: i2c1grp_recovery {
+			fsl,pins = <
+			MX6QDL_PAD_EIM_D21__GPIO3_IO21		0x01b8b1
+			MX6QDL_PAD_EIM_D28__GPIO3_IO28		0x01b8b1
+			>;
+		};
+		
+		pinctrl_i2c2_recovery: i2c2grp_recovery {
+			fsl,pins = <
+			MX6QDL_PAD_KEY_COL3__GPIO4_IO12		0x01b8b1
+			MX6QDL_PAD_KEY_ROW3__GPIO4_IO13		0x01b8b1
+			>;
+		};
+		
+		pinctrl_i2c3_recovery: i2c3grp_recovery {
+			fsl,pins = <
+			MX6QDL_PAD_GPIO_5__GPIO1_IO05		0x01b8b1
+			MX6QDL_PAD_GPIO_6__GPIO1_IO06		0x01b8b1
 			>;
 		};
 		
